@@ -53,3 +53,5 @@ flask_session/
 # OS
 Thumbs.db
 .DS_Store
+
+generators/
