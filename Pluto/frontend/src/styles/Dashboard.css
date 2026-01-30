@@ -1,0 +1,298 @@
+/* PLUTO Dashboard - Custom Styles */
+
+/* Theme Variables */
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #DADADA;
+  --card-border: #000000;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1B1B1D;
+  --text-color: #ffffff;
+  --card-bg: #2A2A30;
+  --card-border: #3A3A3C;
+}
+
+/* Base Dark Theme */
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg-color, #000000);
+  color: var(--text-color, #ffffff);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f1f2e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a3e;
+}
+
+/* Panel Scrolling */
+aside {
+  scroll-behavior: smooth;
+}
+
+/* Ensure panels can scroll independently */
+aside::-webkit-scrollbar {
+  width: 6px;
+}
+
+aside::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+aside::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+aside::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Complete Layout Borders */
+.dashboard-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--bg-color, #000000);
+}
+
+/* Panel Layout Completion */
+.panel-layout {
+  display: flex;
+  flex: 1;
+  height: auto;
+  overflow: hidden;
+}
+
+/* Ensure all panels have consistent borders */
+aside {
+  border-top: 1px solid var(--card-border, #1f1f2e);
+}
+
+/* Header completion */
+header {
+  flex-shrink: 0;
+}
+
+/* Center panel completion */
+main {
+  border-bottom: 1px solid var(--card-border, #1f1f2e);
+  border-left: 1px solid var(--card-border, #1f1f2e);
+  border-right: 1px solid var(--card-border, #1f1f2e);
+}
+
+/* Ensure panels close properly */
+aside {
+  border-bottom: 1px solid var(--card-border, #1f1f2e);
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(20, 20, 31, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Smooth Transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Focus States */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 2px;
+}
+
+/* Text Selection */
+::selection {
+  background-color: rgba(167, 139, 250, 0.3);
+  color: #ffffff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Line Clamp Utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Resizable Panels */
+.resize-handle {
+  position: relative;
+  z-index: 10;
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.resize-handle:hover {
+  background-color: var(--card-border, #1f1f2e);
+}
+
+.resize-handle-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary, #6366f1);
+  border: 2px solid var(--background, #0a0a0f);
+  border-radius: 50%;
+  cursor: col-resize;
+  opacity: 1;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resize-handle-button::before {
+  content: '↔';
+  color: var(--background, #0a0a0f);
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.resize-handle:hover .resize-handle-button {
+  opacity: 1;
+}
+
+.resize-handle-button:hover {
+  background-color: var(--primary-hover, #5855eb);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Prevent text selection during resize */
+body.resizing {
+  user-select: none;
+  cursor: col-resize !important;
+}
+
+body.resizing * {
+  user-select: none;
+}
+
+/* Panel Toggle Buttons - Responsive positioning */
+.panel-toggle-button {
+  position: absolute;
+  z-index: 30;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.panel-toggle-button:hover {
+  transform: scale(1.05);
+}
+
+/* Ensure panel headers have proper spacing */
+aside .panel-header {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--card-border, #1f1f2e);
+  position: sticky;
+  top: 0;
+  background: var(--bg-color, #000000);
+  z-index: 10;
+  margin-top: 0;
+}
+
+/* Panel content spacing to account for toggle buttons */
+aside {
+  padding-top: 0;
+}
+
+/* Mobile responsiveness for toggle buttons */
+@media (max-width: 767px) {
+  .panel-toggle-button {
+    top: 16px !important;
+  }
+}
+
+/* Ensure proper stacking context */
+.panel-layout {
+  position: relative;
+}
+
+.panel-layout > aside {
+  position: relative;
+  z-index: 20;
+}
+
+/* Floating toggle buttons for closed panels */
+.panel-layout > button {
+  position: absolute;
+  top: 80px;
+  z-index: 25;
+}

@@ -1,0 +1,1008 @@
+/* Base */
+.pluto-page {
+  background: var(--bg-color, #000000);
+  color: var(--text-color, #ffffff);
+  font-family: Inter, system-ui, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #DADADA;
+  --card-border: #e5e7eb;
+  --secondary-text: #6b7280;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1B1B1D;
+  --text-color: #ffffff;
+  --card-bg: #111111;
+  --card-border: #444444;
+  --secondary-text: #d1d5db;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero */
+.pluto-hero {
+  text-align: center;
+  padding: 120px 20px 70px;
+}
+
+.pluto-hero h1 {
+  font-size: 10rem;
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .pluto-hero h1 {
+    font-size: 8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pluto-hero {
+    padding: 80px 20px 50px;
+  }
+  
+  .pluto-hero h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pluto-hero h1 {
+    font-size: 3rem;
+  }
+}
+
+.pluto-hero span {
+  color: var(--electric-border-color, #4f46e5);
+}
+
+.pluto-tagline {
+  margin-top: 8px;
+  font-size: 2.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .pluto-tagline {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pluto-tagline {
+    font-size: 1.5rem;
+  }
+}
+
+.pluto-subtitle {
+  max-width: 650px;
+  margin: 22px auto;
+  color: var(--secondary-text);
+  line-height: 1.6;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .pluto-subtitle {
+    font-size: 1.25rem;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .pluto-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* CTA */
+.pluto-cta {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .pluto-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+.primary-btn {
+  background: var(--electric-border-color, #6366f1);
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 140px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--electric-border-color, rgba(99, 102, 241, 0.4));
+}
+
+@media (max-width: 480px) {
+  .primary-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+.secondary-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 14px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 140px;
+}
+
+@media (max-width: 480px) {
+  .secondary-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Preview */
+.pluto-preview {
+  padding: 90px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .pluto-preview {
+    padding: 60px 20px;
+  }
+}
+
+.preview-window {
+  max-width: 900px;
+  width: 100%;
+  border-radius: 16px 16px 16px 16px;
+  border: 0px  solid var(--card-border);
+  border-bottom: none;
+  box-shadow: 0 8px 40px rgba(74, 19, 83, 0.5);
+  background: var(--card-bg);
+  overflow: hidden;
+}
+
+.preview-header {
+  padding: 14px 18px;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--card-border);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.preview-body {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  background: var(--card-bg);
+  border-radius: 0 0 16px 16px;
+}
+
+@media (max-width: 768px) {
+  .preview-body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 0 0 16px 16px;
+  }
+}
+
+.preview-chat {
+  background: var(--bg-color);
+  padding: 18px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .preview-chat {
+    padding: 14px;
+  }
+}
+
+.chat-line {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+  .chat-line {
+    font-size: 0.9rem;
+  }
+}
+
+.preview-docs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.doc-card {
+  background: var(--card-border);
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .doc-card {
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+}
+
+/* Features */
+.pluto-features {
+  padding: 90px 20px;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  padding: 28px;
+  
+}
+
+.feature-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+
+.feature-card p {
+  color: var(--secondary-text);
+  line-height: 1.5;
+}
+
+/* RAG Architecture Overview */
+.rag-architecture {
+  padding: 90px 20px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.rag-architecture h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--text-color);
+}
+
+.architecture-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.component {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 200px;
+  text-align: center;
+}
+
+.component h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.component p {
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: var(--electric-border-color, #4f46e5);
+}
+
+/* Why Evidence Matters */
+.why-evidence {
+  padding: 90px 20px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+  background: var(--bg-color);
+}
+
+.why-evidence h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--text-color);
+}
+
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.column {
+  padding: 40px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+}
+
+.column h3 {
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.column p {
+  color: var(--secondary-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Video / Motion Section */
+.video-section {
+  padding: 90px 20px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.video-player {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: bold;
+  border: 1px solid var(--card-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.pluto-interface-video {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 16px;
+}
+
+.video-player:hover .video-overlay {
+  opacity: 1;
+}
+
+.play-button {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+}
+
+.video-caption {
+  max-width: 600px;
+  color: var(--secondary-text);
+  line-height: 1.5;
+}
+
+/* Built for Research & Decision Making */
+.built-for {
+  padding: 90px 20px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.built-for h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--text-color);
+}
+
+.use-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.use-case {
+  padding: 30px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.use-case:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.use-case h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+  color: var(--text-color);
+}
+
+.use-case p {
+  color: var(--secondary-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Final CTA */
+.final-cta {
+  padding: 90px 20px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+  background: var(--bg-color);
+  border-radius: 24px;
+  margin-bottom: 50px;
+}
+
+.final-cta h2 {
+  font-size: 3rem;
+  margin: 0 0 20px 0;
+  color: var(--text-color);
+}
+
+.final-cta p {
+  font-size: 1.2rem;
+  color: var(--secondary-text);
+  margin: 0 0 40px 0;
+}
+
+.cta-button {
+  background: var(--electric-border-color, #6366f1);
+  color: white;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--electric-border-color, rgba(99, 102, 241, 0.4));
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+}
+
+.cta-button-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* PLUTO Decorative */
+.pluto-decorative {
+  padding: 60px 20px;
+  text-align: center;
+  background: var(--bg-color);
+  border-top: 1px solid var(--card-border);
+}
+
+.decorative-content {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.pluto-symbol {
+  width: 50px;
+  height: 50px;
+  background: var(--electric-border-color, #6366f1);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px var(--electric-border-color, rgba(79, 70, 229, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.pluto-symbol:hover {
+  transform: scale(1.1);
+}
+
+.decorative-text {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.decorative-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+  flex-wrap: wrap;
+}
+
+/* Footer */
+.pluto-footer {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-color);
+  background: var(--bg-color);
+  border-top: 1px solid var(--card-border);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pluto-features {
+    padding: 70px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .rag-architecture {
+    padding: 70px 20px;
+  }
+
+  .rag-architecture h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .component {
+    padding: 24px;
+    max-width: 180px;
+  }
+
+  .why-evidence {
+    padding: 70px 20px;
+  }
+
+  .why-evidence h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .comparison {
+    gap: 30px;
+  }
+
+  .column {
+    padding: 30px;
+  }
+
+  .video-section {
+    padding: 70px 20px;
+  }
+
+  .video-player {
+    height: 400px;
+  }
+
+  .built-for {
+    padding: 70px 20px;
+  }
+
+  .built-for h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .use-cases {
+    gap: 20px;
+  }
+
+  .use-case {
+    padding: 24px;
+  }
+
+  .final-cta {
+    padding: 70px 20px;
+  }
+
+  .final-cta h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pluto-page {
+    padding: 0 10px;
+  }
+
+  .pluto-features {
+    padding: 60px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-card {
+    padding: 24px;
+  }
+
+  .rag-architecture {
+    padding: 60px 20px;
+  }
+
+  .rag-architecture h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .architecture-diagram {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .component {
+    padding: 20px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .component h4 {
+    font-size: 1.1rem;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+  }
+
+  .why-evidence {
+    padding: 60px 20px;
+  }
+
+  .why-evidence h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .comparison {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .column {
+    padding: 24px;
+  }
+
+  .column h3 {
+    font-size: 1.3rem;
+  }
+
+  .video-section {
+    padding: 60px 20px;
+  }
+
+  .video-player {
+    height: 250px;
+  }
+
+  .video-caption {
+    font-size: 0.9rem;
+  }
+
+  .built-for {
+    padding: 60px 20px;
+  }
+
+  .built-for h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .use-cases {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .use-case {
+    padding: 20px;
+  }
+
+  .use-case h3 {
+    font-size: 1.2rem;
+  }
+
+  .final-cta {
+    padding: 60px 20px;
+    margin-bottom: 30px;
+  }
+
+  .final-cta h2 {
+    font-size: 2rem;
+  }
+
+  .final-cta p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 16px 32px;
+    font-size: 1rem;
+  }
+
+  .pluto-decorative {
+    padding: 40px 20px;
+  }
+
+  .decorative-content {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pluto-symbol {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .decorative-text {
+    font-size: 1rem;
+  }
+
+  .pluto-footer {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pluto-hero {
+    padding: 60px 15px 40px;
+  }
+
+  .pluto-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .pluto-tagline {
+    font-size: 1.3rem;
+  }
+
+  .pluto-subtitle {
+    font-size: 0.95rem;
+    max-width: 95%;
+  }
+
+  .pluto-cta {
+    margin-top: 24px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    min-width: 120px;
+  }
+
+  .pluto-preview {
+    padding: 50px 15px;
+  }
+
+  .preview-body {
+    padding: 12px;
+  }
+
+  .preview-header {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+
+  .preview-chat {
+    padding: 12px;
+  }
+
+  .chat-line {
+    font-size: 0.85rem;
+  }
+
+  .doc-card {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+
+  .pluto-features {
+    padding: 50px 15px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .feature-card h3 {
+    font-size: 1rem;
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+  }
+
+  .rag-architecture {
+    padding: 50px 15px;
+  }
+
+  .rag-architecture h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .component {
+    padding: 16px;
+  }
+
+  .component h4 {
+    font-size: 1rem;
+  }
+
+  .component p {
+    font-size: 0.85rem;
+  }
+
+  .why-evidence {
+    padding: 50px 15px;
+  }
+
+  .why-evidence h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .column {
+    padding: 20px;
+  }
+
+  .column h3 {
+    font-size: 1.2rem;
+  }
+
+  .column p {
+    font-size: 0.9rem;
+  }
+
+  .video-section {
+    padding: 50px 15px;
+  }
+
+  .video-player {
+    height: 200px;
+  }
+
+  .video-caption {
+    font-size: 0.85rem;
+    max-width: 90%;
+  }
+
+  .built-for {
+    padding: 50px 15px;
+  }
+
+  .built-for h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .use-case {
+    padding: 16px;
+  }
+
+  .use-case h3 {
+    font-size: 1.1rem;
+  }
+
+  .use-case p {
+    font-size: 0.9rem;
+  }
+
+  .final-cta {
+    padding: 50px 15px;
+    margin-bottom: 20px;
+  }
+
+  .final-cta h2 {
+    font-size: 1.8rem;
+  }
+
+  .final-cta p {
+    font-size: 0.95rem;
+  }
+
+  .cta-button {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+  }
+
+  .pluto-decorative {
+    padding: 30px 15px;
+  }
+
+  .pluto-symbol {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .decorative-text {
+    font-size: 0.95rem;
+  }
+
+  .pluto-footer {
+    padding: 25px 15px;
+    font-size: 0.9rem;
+  }
+}
