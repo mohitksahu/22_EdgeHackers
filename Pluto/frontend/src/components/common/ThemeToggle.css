@@ -1,0 +1,42 @@
+.theme-toggle {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--toggle-border, #ffffff);
+  background: var(--toggle-bg, #ffffff);
+  color: var(--toggle-text, #000000);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-text {
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 1px;
+}
+
+[data-theme="dark"] .theme-toggle {
+  --toggle-bg: #ffffff;
+  --toggle-text: #000000;
+  --toggle-border: #000000;
+}
+
+[data-theme="light"] .theme-toggle {
+  --toggle-bg: #000000;
+  --toggle-text: #ffffff;
+  --toggle-border: #ffffff;
+}

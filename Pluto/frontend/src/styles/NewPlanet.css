@@ -1,0 +1,280 @@
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #DADADA;
+  --card-border: #e5e7eb;
+  --secondary-text: #6b7280;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1B1B1D;
+  --text-color: #ffffff;
+  --card-bg: #2A2A30;
+  --card-border: #3A3A3C;
+  --secondary-text: #d1d5db;
+}
+
+.new-planet {
+  min-height: 100vh;
+  padding: 120px 60px 70px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: Inter, system-ui, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Header */
+.new-planet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.new-planet-header h2 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.see-all-btn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--secondary-text);
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.see-all-btn:hover {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Grid */
+.planet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card base */
+.planet-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.planet-card:hover {
+  transform: translateY(-4px);
+  background: var(--card-bg);
+  border-color: #a78bfa;
+}
+
+/* Create Planet */
+.create-planet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.plus-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c7cff, #b983ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+/* Planet cards */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.initials {
+  background: var(--card-border);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.notebook-icon {
+  font-size: 24px;
+}
+
+.menu {
+  font-size: 20px;
+  opacity: 0.6;
+  color: var(--secondary-text);
+}
+
+.planet-card h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-color);
+}
+
+.planet-card p,
+.planet-card span {
+  color: var(--secondary-text);
+}
+
+.meta {
+  font-size: 13px;
+  color: #a0a6c3;
+}
+
+/* Menu Button */
+.menu-container {
+  position: relative;
+}
+
+.menu-button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  opacity: 0.6;
+  color: var(--secondary-text);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.menu-button:hover {
+  opacity: 1;
+  background: var(--card-border);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 120px;
+  overflow: hidden;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: var(--card-border);
+}
+
+.dropdown-item.delete {
+  color: #ef4444;
+}
+
+.dropdown-item.delete:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Rename Input */
+.rename-input-container {
+  margin-bottom: 6px;
+}
+
+.rename-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+}
+
+.rename-input:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.2);
+}
+
+.rename-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.rename-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.rename-btn.save {
+  background: #10b981;
+  color: white;
+}
+
+.rename-btn.save:hover:not(:disabled) {
+  background: #059669;
+}
+
+.rename-btn.save:disabled {
+  background: #6b7280;
+  cursor: not-allowed;
+}
+
+.rename-btn.cancel {
+  background: #ef4444;
+  color: white;
+}
+
+.rename-btn.cancel:hover {
+  background: #dc2626;
+}

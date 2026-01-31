@@ -1,0 +1,44 @@
+# Core Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# LangGraph & LangChain
+langgraph>=0.0.40
+langchain>=0.1.0
+langchain-core>=0.1.0
+
+# Ollama Client
+ollama>=0.1.6
+
+# Vector Database
+qdrant-client>=1.7.0
+
+# Embeddings
+fastembed>=0.2.0
+numpy>=1.24.0
+
+# Audio Processing
+faster-whisper>=0.10.0
+
+# Document Processing
+PyMuPDF>=1.23.0
+Pillow>=10.0.0
+chardet>=5.2.0
+
+# BM25 & Text Processing
+rank-bm25>=0.2.2
+
+# HTTP Client
+aiohttp>=3.9.0
+requests>=2.31.0
+httpx>=0.25.0
+
+# Utilities
+python-multipart>=0.0.6
+rich>=13.7.0
+tqdm>=4.66.0
+
+# Optional: Cross-encoder reranking
+sentence-transformers>=2.2.0

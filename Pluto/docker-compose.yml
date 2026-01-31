@@ -1,0 +1,109 @@
+services:
+  # Ollama for LLM and Vision models
+  ollama:
+    image: ollama/ollama:latest
+    container_name: pluto-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - pluto-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Qdrant Vector Database
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: pluto-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - ./data/qdrant_storage:/qdrant/storage
+    networks:
+      - pluto-network
+    restart: unless-stopped
+    environment:
+      - QDRANT__SERVICE__GRPC_PORT=6334
+
+  # Backend API with GPU support
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pluto-backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Paths (container paths)
+      - DATA_DIR=/app/data
+      - MODELS_DIR=/app/data/models
+      - UPLOAD_DIR=/app/data/uploads
+      - LOG_FILE_PATH=/app/data/logs/app.log
+      - CHAT_HISTORY_DIR=/app/data/chat_history
+      # Qdrant connection
+      - QDRANT_HOST=pluto-qdrant
+      - QDRANT_PORT=6333
+      - COLLECTION_NAME=pluto_multimodal
+      # Ollama connection (use container name)
+      - OLLAMA_HOST=http://pluto-ollama:11434
+      - OLLAMA_MODEL=llama3.2:1b
+      # Whisper settings (GPU)
+      - WHISPER_MODEL=base
+      - WHISPER_DEVICE=cuda
+      - WHISPER_COMPUTE_TYPE=float16
+      # Embedding settings
+      - EMBEDDING_MODEL=Qdrant/clip-ViT-B-32-text
+      - IMAGE_EMBEDDING_MODEL=Qdrant/clip-ViT-B-32-vision
+      - EMBEDDING_DIMENSION=512
+      # Debug
+      - DEBUG=true
+      - LOG_LEVEL=INFO
+    volumes:
+      # Mount data directory (includes models, uploads, logs)
+      - ./data:/app/data
+      - ./config:/app/config
+    networks:
+      - pluto-network
+    depends_on:
+      - qdrant
+      - ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Frontend (Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: pluto-frontend
+    ports:
+      - "80:80"
+      - "5173:80"
+    environment:
+      - VITE_API_URL=http://localhost:8000/api/v1
+    depends_on:
+      - backend
+    networks:
+      - pluto-network
+    restart: unless-stopped
+
+networks:
+  pluto-network:
+    driver: bridge
+
+volumes:
+  ollama_data:
