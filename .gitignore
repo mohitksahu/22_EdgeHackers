@@ -1,5 +1,5 @@
 # React Frontend
-/node_modules
+node_modules/
 /build
 /dist
 /.pnp
@@ -21,6 +21,9 @@ __pycache__/
 .Python
 env/
 venv/
+venv311/
+.venv/
+.venv311/
 ENV/
 env.bak/
 venv.bak/
@@ -53,5 +56,9 @@ flask_session/
 # OS
 Thumbs.db
 .DS_Store
+
+# Model files
+Pluto/data/models/
+data/models/
 
 generators/
